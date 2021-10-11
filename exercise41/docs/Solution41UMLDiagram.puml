@@ -1,0 +1,25 @@
+@startuml
+class Names {
+-Formatter output
+-Scanner in
+-List<String> listOfNames
+
++Names(String inputFile, String outputFile)
++String getName(int position)
+-Scanner openInputFile(String file)
+-Formatter openOutputFile(String file)
+-void addNameToList()
+-String getNameFromFile()
+-void readNamesFromFile()
++void sortListAlphabetically()
++void printNamesToFile()
+-void closeFiles()
+}
+
+class Solution41 {
+~Names listOfNames
++void main(String[] args)
+}
+
+Names -- Solution41
+@enduml

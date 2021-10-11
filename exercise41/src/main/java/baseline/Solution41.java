@@ -14,19 +14,14 @@ public class Solution41 extends Names {
 
     public static void main(String[] args) {
 
-        //open output file
-        openFile();
-
         //create new list of names from input file
-        Names listOfNames = new Names("exercise41_input.txt");
+        Names listOfNames = new Names("./data/exercise41_input.txt","./data/exercise41_output.txt");
 
         //sort the list of names
         listOfNames.sortListAlphabetically();
 
         //print the results to the output file
+        //this method calls for the streams to be closed
         listOfNames.printNamesToFile();
-
-        //close output file
-        closeFile();
     }
 }
