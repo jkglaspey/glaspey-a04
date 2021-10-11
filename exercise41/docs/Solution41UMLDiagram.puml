@@ -1,6 +1,6 @@
 @startuml
 class Names {
--Formatter output
+-Formatter out
 -Scanner in
 -List<String> listOfNames
 
@@ -8,7 +8,7 @@ class Names {
 +String getName(int position)
 -Scanner openInputFile(String file)
 -Formatter openOutputFile(String file)
--void addNameToList()
+-void addNameToList(String name)
 -String getNameFromFile()
 -void readNamesFromFile()
 +void sortListAlphabetically()

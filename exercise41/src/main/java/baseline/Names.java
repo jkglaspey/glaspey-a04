@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Names {
 
-    //create class output (we will be modifying one file)
+    //create output formatter for each instance
     private final Formatter out;
 
     //create input reader for each instance
