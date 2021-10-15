@@ -1,0 +1,45 @@
+@startuml
+class htmlFileWriter {
+' Strings are data variables being used in the HTML file
+-String name
+-String author
+' booleans determine if extra directories are created
+-boolean hasJSFiles
+-boolean hasCSSFiles
+' File objects are used as output streams to create directories and the html file
+-File websiteDirectory
+-File JSDirectory
+-File CSSDirectory
+-File htmlFile
+' BufferedWriter object is used to write output to the html file
+-BufferedWriter out
+
+' Constructor creates every directory, but not the html file
++htmlFileWriter(String name, String author, boolean hasJSFiles, boolean hasCSSFiles)
+-void generateWebsiteDirectory()
+-void generateJSFilesDirectory()
+-void generateCSSFilesDirectory()
++void generateHTMLFile()
+-void writeDataToHTMLFile()
++void closeFiles()
+}
+
+class inputReader {
+' Scanner is created as System.in
+-Scanner in
+
+' Constructor initializes Scanner
++inputReader()
++String askUserForName()
++String askUserForAuthor()
++boolean askIfUserWantsJSFiles()
++boolean askIfUserWantsCSSFiles()
+}
+
+class Solution42 {
++void main(String[] args)
+}
+
+inputReader -- Solution42
+htmlFileWriter -- Solution42
+@enduml
