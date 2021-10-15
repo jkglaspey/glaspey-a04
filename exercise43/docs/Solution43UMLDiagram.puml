@@ -8,14 +8,14 @@ class htmlFileWriter {
 ' BufferedWriter object is used to write output to the html file
 -BufferedWriter out
 
-' Constructor creates every directory, but not the html file
+' Constructor calls all methods of the class. Everything was specified by the user, so no need for change.
 +htmlFileWriter(String name, String author, boolean hasJSFiles, boolean hasCSSFiles)
 -void generateWebsiteDirectory()
 -void generateJSFilesDirectory()
 -void generateCSSFilesDirectory()
 -void generateHTMLFile()
 -void writeDataToHTMLFile()
-+void closeFiles()
+-void closeFiles()
 }
 
 class inputReader {

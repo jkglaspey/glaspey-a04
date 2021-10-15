@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -143,7 +145,23 @@ class HTMLFileWriterTest {
     void test_writeDataToHTML() {
         // try to read directory
         try (BufferedReader in = new BufferedReader(new FileReader("./data/website/final_test/index.html"))) {
-            assertEquals("final_test", in.readLine());
+            // get the entire html string
+            String html = "";
+            String temp = " ";
+            while(temp != null) {
+                temp = in.readLine();
+                if(temp != null) html += temp;
+            }
+
+            // find the website name using regex pattern
+            Pattern websitePattern = Pattern.compile("<title>final_test</title>");
+            Matcher findWebsiteName = websitePattern.matcher(html);
+            assertTrue(findWebsiteName.find());
+
+            // find the author name using regex pattern
+            Pattern authorPattern = Pattern.compile("<meta>author</html>");
+            Matcher findAuthorName = authorPattern.matcher(html);
+            assertTrue(findAuthorName.find());
         }
         // file was not created
         catch (FileNotFoundException fileNotFoundException) {

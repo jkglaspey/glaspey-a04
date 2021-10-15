@@ -145,6 +145,9 @@ public class HTMLFileWriter {
 
             // print success in system output
             System.out.printf(FORMAT, PATH,name,INDEX);
+
+            //close the writer stream
+            closeFiles();
         }
         // catch Java.io.File exception "IOException"
         catch (IOException ioException) {
@@ -153,7 +156,7 @@ public class HTMLFileWriter {
     }
 
     // Create method to close file streams
-    public void closeFiles() {
+    private void closeFiles() {
 
         // if the stream is not null, close it
         if(out != null) {

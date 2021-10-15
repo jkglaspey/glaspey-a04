@@ -34,10 +34,10 @@ public class Solution43 {
 
         // Create new htmlFileWriter object using the local variables.
         // This will create a new website directory inside the project.
-        HTMLFileWriter out = new HTMLFileWriter(name,author,hasJSFiles,hasCSSFiles);
+        // Since we do not need to access elements inside the file, we do not have to save the object.
+        new HTMLFileWriter(name,author,hasJSFiles,hasCSSFiles);
 
-        // close the streams
+        // close the input stream
         in.closeFiles();
-        out.closeFiles();
     }
 }
