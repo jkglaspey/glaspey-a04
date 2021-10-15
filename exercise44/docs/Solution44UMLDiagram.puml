@@ -1,0 +1,67 @@
+@startuml
+' This class creates Products from a json file utilizing gson
+class ProductMakerFromJson {
+' This variable stores the path to the json
+-String path
+' This variable is a stream for reading from the json file
+-JsonReader jsonStream;
+
+' Constructor initializes jsonStream using createJsonReader()
++ProductMakerFromJson(String path)
+-void createJsonReader()
++boolean hasUnreadProduct()
++Product getNextProduct()
+}
+
+' This class creates a Product object which stores the name, price, and quantity of an item
+class Product {
+-String name
+-String price
+-String quantity
+
++Product(String name, String price, String quantity)
++Product()
++String getName()
++String getPrice()
++String getQuantity()
+}
+
+' This class manages a specific list of Products
+class ProductDatabase {
+' This variable stores the products from a json
+-List<Product> listOfProducts
+' This variable saves the index of one product being located
+-int currentProductPosition
+
+' Constructor initializes ArrayList
++ProductDatabase()
++void addProductToDatabase(Product p)
++boolean findProductInDatabase()
++void printCurrentProduct()
+}
+
+' This class reads input from the user
+class UserInputReader {
+' Scanner is created as System.in
+-Scanner in
+
+' Constructor initializes Scanner
++UserInputReader()
++String getProductFromUser()
++void closeFile()
+}
+
+' This is the default solution class
+class Solution44 {
++void main(String[] args)
+}
+
+ProductDatabase -- Solution44
+ProductMakerFromJson -- Solution44
+UserInputReader -- Solution44
+Product -- UserInputReader
+Product -- ProductMakerFromJson
+Product <|-- ProductDatabase
+ProductDatabase <|-- UserInputReader
+
+@enduml
