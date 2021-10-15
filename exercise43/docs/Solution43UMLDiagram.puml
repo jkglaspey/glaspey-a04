@@ -3,13 +3,7 @@ class htmlFileWriter {
 ' Strings are data variables being used in the HTML file
 -String name
 -String author
-' booleans determine if extra directories are created
--boolean hasJSFiles
--boolean hasCSSFiles
-' File objects are used as output streams to create directories and the html file
--File websiteDirectory
--File JSDirectory
--File CSSDirectory
+' File object used to create html file
 -File htmlFile
 ' BufferedWriter object is used to write output to the html file
 -BufferedWriter out
@@ -19,7 +13,7 @@ class htmlFileWriter {
 -void generateWebsiteDirectory()
 -void generateJSFilesDirectory()
 -void generateCSSFilesDirectory()
-+void generateHTMLFile()
+-void generateHTMLFile()
 -void writeDataToHTMLFile()
 +void closeFiles()
 }
@@ -34,6 +28,7 @@ class inputReader {
 +String askUserForAuthor()
 +boolean askIfUserWantsJSFiles()
 +boolean askIfUserWantsCSSFiles()
++void closeFiles()
 }
 
 class Solution42 {

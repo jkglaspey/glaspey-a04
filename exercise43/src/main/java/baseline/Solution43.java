@@ -14,7 +14,7 @@ public class Solution43 {
     public static void main(String[] args) {
 
         // Create new object to read user input
-        inputReader in = new inputReader();
+        InputReader in = new InputReader();
 
         // Prompt for the name of the site.
         // Save it as a local String variable
@@ -34,13 +34,10 @@ public class Solution43 {
 
         // Create new htmlFileWriter object using the local variables.
         // This will create a new website directory inside the project.
-        htmlFileWriter out = new htmlFileWriter(name,author,hasJSFiles,hasCSSFiles);
-
-        // Generate an index.html file that contains the name of the site inside the <title> tag and the author in a
-        // <meta> tag.
-        out.generateHTMLFile();
+        HTMLFileWriter out = new HTMLFileWriter(name,author,hasJSFiles,hasCSSFiles);
 
         // close the streams
+        in.closeFiles();
         out.closeFiles();
     }
 }
