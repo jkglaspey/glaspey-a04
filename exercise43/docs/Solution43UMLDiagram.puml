@@ -31,10 +31,10 @@ class inputReader {
 +void closeFiles()
 }
 
-class Solution42 {
+class Solution43 {
 +void main(String[] args)
 }
 
-inputReader -- Solution42
-htmlFileWriter -- Solution42
+inputReader -- Solution43
+htmlFileWriter -- Solution43
 @enduml
