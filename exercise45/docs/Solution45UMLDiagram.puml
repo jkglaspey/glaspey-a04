@@ -1,0 +1,56 @@
+@startuml
+
+class InputManager {
+' Instance variables which manage a Scanner stream and file
+-Scanner inputStream;
+-File inputFile;
+
+' Constructor initializes file and stream
++InputManager(String path)
+-File createInputFile(String path)
+-Scanner createInputStream()
++File getInputFile()
++Scanner getInputStream()
++void closeFile()
+}
+
+class DataInputFile {
+' Constructor uses super
++DataInputFile(String path)
++boolean hasNextLine()
++String getNextLine()
+}
+
+class DataOutputFile {
+' Instance variable which opens a file writer
+-File outputFile
+-Formatter outputStream
+
+' Constructor initializes streams and catches file opening errors
++DataOutputFile(String path)
+-File createOutputFile()
+-Formatter createOutputStream()
++File getOutputFile()
++Scanner getOutputStream()
++void writeToFileAndReplace(String s, String contains, String replace)
+-String replaceOccurrencesInString(String s, String contains, String replace)
++void closeFile()
+}
+
+class UserInput {
+' Constructor initializes stream to System.in
++UserInput()
++String askUserForFileName()
+}
+
+class Solution45 {
++void main(String[] args)
+}
+
+DataInputFile -- Solution45
+DataOutputFile -- Solution45
+UserInput -- Solution45
+InputManager <|-- DataInputFile
+InputManager <|-- UserInput
+
+@enduml
