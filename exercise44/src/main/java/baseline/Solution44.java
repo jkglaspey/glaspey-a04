@@ -21,7 +21,7 @@ public class Solution44 {
     public static void main(String[] args) {
 
         // create new json manager
-        ProductMakerFromJson json = new ProductMakerFromJson("data/exercise44_input.json")
+        ProductMakerFromJson json = new ProductMakerFromJson("data/exercise44_input.json");
 
         // create database to store products
         ProductDatabase listOfProducts = new ProductDatabase();
@@ -36,7 +36,7 @@ public class Solution44 {
         UserInputReader userReader = new UserInputReader();
 
         // get a product from the user, and save the position in the database
-        userReader.askUserForProduct();
+        userReader.askUserForProduct(listOfProducts);
 
         // print the saved product
         listOfProducts.printCurrentProduct();

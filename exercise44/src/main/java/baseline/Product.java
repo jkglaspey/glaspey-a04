@@ -10,18 +10,22 @@ package baseline;
 public class Product {
 
     //declare instance variables to store data
-    private String name;
-    private String price;
-    private String quantity;
+    private final String name;
+    private final String price;
+    private final String quantity;
 
     // create public constructor to initialize values
     public Product(String name, String price, String quantity) {
-        // initialize instance variables
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
     }
 
     // create default constructor to initialize null values
     public Product() {
-        // set everything to null
+        name = null;
+        price = null;
+        quantity = null;
     }
 
     // create method to return the product name

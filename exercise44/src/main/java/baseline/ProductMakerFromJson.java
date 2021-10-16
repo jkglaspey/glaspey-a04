@@ -7,38 +7,77 @@
 
 package baseline;
 
-import com.google.gson.JsonStreamParser;
+import com.google.gson.*;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class ProductMakerFromJson {
 
-    // create instance variables for file path and stream parser
+    // create instance variables for file path and json objects
     private final String path;
-    private JsonStreamParser jsonStream;
+    private final JsonArray products;
+
+    // create instance count for maintaining JsonArrays
+    private int position;
 
     // create constructor to initialize the stream from the file path
+    // use stream to get json values
+    // close stream
     public ProductMakerFromJson(String path) {
-        // initialize path
-        // call createJsonReader
+        // save path
+        this.path = path;
+
+        // declare json stream and json array
+        JsonStreamParser jsonStream;
+        JsonArray productsTemp;
+
+        // try to initialize
+        try {
+            // create a json stream
+            jsonStream = createJsonReader();
+
+            // get jsonArray for each product
+            productsTemp = createJsonArray(jsonStream);
+        }
+        catch (FileNotFoundException fileNotFoundException) {
+            System.err.print("Error reading from file.");
+            productsTemp = null;
+        }
+
+        // save array values
+        products = productsTemp;
+        position = 0;
     }
 
     // create method to initialize the stream
     // will be called by the constructor
-    private void createJsonReader() {
+    private JsonStreamParser createJsonReader() throws FileNotFoundException {
         // try to open a new input reader stream from the file path
-        // catch if the file could not be located
+        return new JsonStreamParser(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
     }
 
-    // create method to determine if there is another product in the json file
+    // create method to create an array of json objects containing each product
+    private JsonArray createJsonArray(JsonStreamParser jsonStream) {
+        // return json array for each product by parsing the stream into an object, then array
+        return jsonStream.next().getAsJsonObject().get("products").getAsJsonArray();
+    }
+
+    // create method to determine if there's still values left in the arrays (for use by main)
     public boolean hasUnreadProduct() {
-        // return the hasNext method from InputStream
-        return jsonStream.hasNext();
+        return position < products.size();
     }
 
     // create method to grab the next product from the json file
     public Product getNextProduct() {
-        // create new Gson object to allow us to grab object from the file
-        // create new Json element from stream position
-        // if the object exists, return the Product which will be parsed from the stream
-        // catch if we grab a null element
+        Product temp = new Product(products.get(position).getAsJsonObject().get("name").getAsString(),
+                products.get(position).getAsJsonObject().get("price").getAsString(),
+                products.get(position).getAsJsonObject().get("quantity").getAsString());
+
+        // increment position for next use
+        position++;
+
+        // return new product
+        return temp;
     }
 }

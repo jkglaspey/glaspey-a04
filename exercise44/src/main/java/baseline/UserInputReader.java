@@ -9,7 +9,7 @@ package baseline;
 
 import java.util.Scanner;
 
-public class UserInputReader extends ProductDatabase {
+public class UserInputReader {
 
     // create instance scanner stream for system input
     private final Scanner in;
@@ -21,16 +21,24 @@ public class UserInputReader extends ProductDatabase {
     }
 
     // create method to ask the user for a product name and return the string
-    public void askUserForProduct() {
-        // loop until we break
-        // prompt user to enter name
-        // call ProductDatabase method to validate that the product exists
-        // if true, break
-        // else loop again
+    public void askUserForProduct(ProductDatabase database) {
+        // loop to verify the input is valid
+        while(true) {
+            // prompt user to enter name
+            System.out.print("What is the product name? ");
+
+            // call ProductDatabase method to validate that the product exists
+            // if true, break
+            if(database.findProductInList(in.nextLine())) break;
+
+            // else loop again
+            else System.out.print("Sorry, that product was not found in our inventory.\n");
+        }
     }
 
     // create method to close input stream
     public void closeFile() {
-        // if Scanner is not null, close it
+        // If we're calling this method, that means the scanner is not null. Therefore, we do not need to check.
+        in.close();
     }
 }

@@ -3,12 +3,15 @@
 class ProductMakerFromJson {
 ' This variable stores the path to the json
 -String path
-' This variable is a stream for reading from the json file
--JsonReader jsonStream;
+' This variable is an array of json objects containing the data for each product
+-JsonArray products
+' This variable serves as an index
+-int position
 
 ' Constructor initializes jsonStream using createJsonReader()
 +ProductMakerFromJson(String path)
--void createJsonReader()
+-JsonStreamParser createJsonReader()
+-JsonArray createJsonArray(JsonStreamParser jsonStream)
 +boolean hasUnreadProduct()
 +Product getNextProduct()
 }
@@ -35,6 +38,7 @@ class ProductDatabase {
 
 ' Constructor initializes ArrayList
 +ProductDatabase()
++int getCurrentPosition()
 +void addProductToDatabase(Product p)
 +boolean findProductInDatabase()
 +void printCurrentProduct()
@@ -47,7 +51,7 @@ class UserInputReader {
 
 ' Constructor initializes Scanner
 +UserInputReader()
-+String getProductFromUser()
++void askUserForProduct(ProductDatabase database)
 +void closeFile()
 }
 
@@ -60,8 +64,8 @@ ProductDatabase -- Solution44
 ProductMakerFromJson -- Solution44
 UserInputReader -- Solution44
 Product -- UserInputReader
+UserInputReader -- ProductDatabase
 Product -- ProductMakerFromJson
 Product <|-- ProductDatabase
-ProductDatabase <|-- UserInputReader
 
 @enduml
