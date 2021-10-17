@@ -11,39 +11,50 @@ package baseline;
 public class Word implements Comparable<Word> {
 
     // Create instance variables to store the name of the word and its number of occurrences
-    private String word;
+    private final String myWord;
     private int count;
 
     // Create constructor to initialize values
     public Word(String word) {
         // initialize word
+        this.myWord = word;
+
         // set count to 1
+        count = 1;
     }
 
     // Create method to access the word
-    public String getWord() { return word; }
+    public String getMyWord() { return myWord; }
 
     // Create method to access the count
     public int getCount() { return count; }
 
     // Create method to increment the count
     public void foundWord() {
-        // increment the count
+        count++;
     }
 
     // Override the compareTo method, so we can sort arraylist by count
     @Override
     public int compareTo(Word base) {
         // get the parameter word count
+        int compareCount = base.getCount();
+
         // determine if current word occurs more or less frequently than the parameter word
+        return compareCount - this.count;
     }
 
-    // Override the toString() method to make printing on the histogram easier
+    // Override the equals() method to keep consistency
     @Override
-    public String toString() {
-        // begin the word by appending ": " to the end
-        // loop for its frequency
-        // add asterisks to end of word
-        // return the word with a newline at the end
+    public boolean equals(Object base) {
+        return base == this;
+    }
+
+    // Override the hashCode() method to maintain variable uniqueness
+    @Override
+    public int hashCode() {
+        int result = count ^ (count >>> 31); // 31 is an arbitrary prime number
+        result = 31 * result + myWord.hashCode();
+        return result;
     }
 }
