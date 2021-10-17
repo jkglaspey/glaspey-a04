@@ -1,0 +1,53 @@
+@startuml
+
+class DataInputReader {
+' Instance variable references a stream to input file
+-Scanner inputReader;
+
+' Constructor initializes stream to input file
++DataInputReader(String path)
+
++boolean hasNextLine()
++boolean getNextLine()
++void closeStream()
+}
+
+class FrequencyCounter {
+' Instance variable stores a list of each word
+-List<Word> listOfWords
+
+' Constructor initializes a list for words
++FrequencyCounter()
++void countWordOccurrencesInString(String s)
++boolean isWordInList(String word)
++List<Word> getListOfWords
+-void sortListOfWords()
++void printListOfWords()
+}
+
+class Word {
+' Instance variable stores String for word and number of occurrences
+-String word
+-int count
+
+' Constructor saves word and initializes values
++Word(String word)
++String getWord()
++int getCount()
++void foundWord()
+' We are overriding compareTo from ArrayList
++int compareTo(Word base)
+' We are overriding toString from ArrayList
++String toString()
+}
+
+class Solution46 {
++void main(String[] args)
+}
+
+Solution46 -- Word
+Solution46 -- FrequencyCounter
+Solution46 -- DataInputReader
+Word -- FrequencyCounter
+
+@enduml
