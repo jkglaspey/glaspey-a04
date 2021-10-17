@@ -12,12 +12,15 @@ public class UserInput extends InputManager {
 
     // Create a constructor to initialize a System.in stream
     public UserInput() {
-        // set scanner to System.in
+        super.setInputStreamToSystemIn();
     }
 
     // Create method to ask user for an output file name
     public String askUserForFileName() {
         // prompt user to enter file name
+        System.out.print("Enter name of output file: ");
+
         // return next line
+        return getInputStream().nextLine();
     }
 }

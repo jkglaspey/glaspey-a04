@@ -7,21 +7,32 @@
 
 package baseline;
 
-public class DataInputFile {
+import java.io.FileNotFoundException;
+
+public class DataInputFile extends InputManager {
 
     // Create a constructor to initialize a file stream
     public DataInputFile(String path) {
-        // super path
+        super(path);
+
         // create input stream
+        try {
+            super.setInputStream();
+        }
+        // catch file not found exception
+        catch (FileNotFoundException e) {
+            System.err.print("Error locating file.");
+            System.exit(1);
+        }
     }
 
     // Create method to determine if the input file has another line
     public boolean hasNextLine() {
-        // return Scanner.hasNext()
+        return getInputStream().hasNext();
     }
 
     // Create method to get the next line from the input file using the input stream
     public String getNextLine() {
-        // return Scanner next line
+        return getInputStream().nextLine();
     }
 }

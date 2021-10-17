@@ -18,25 +18,32 @@ public class InputManager {
     private File inputFile;
     private Scanner inputStream;
 
-    // Initialize the file and Scanner (DataInputFile)
+    // Create one-parameter constructor (DataInputFile)
     public InputManager(String path) {
         // initialize file and catch exception
-        // initialize stream and catch exception
+        inputFile = createInputFile(path);
     }
 
-    // Initialize the Scanner (UserInput)
-    public InputManager() {
-        // initialize stream to System.in
-    }
+    // Create no parameter constructor (UserInput)
+    public InputManager() {}
 
     // Create method to return a new file from a string path
     private File createInputFile(String path) {
         return new File(path);
     }
 
-    // Create method to return a new Scanner from a file
-    private Scanner createInputStream() throws FileNotFoundException {
-        return new Scanner(inputFile);
+    // Create method to create a new Scanner from a file
+    public void setInputStream() throws FileNotFoundException {
+        inputStream = new Scanner(inputFile);
+    }
+
+    // Create method to set the input stream to System.in
+    public void setInputStreamToSystemIn() {
+        // close the previous stream
+        closeFile();
+
+        // create new stream
+        inputStream = new Scanner(System.in);
     }
 
     // Create method to return the input file
@@ -52,5 +59,6 @@ public class InputManager {
     // Create method to close the input stream
     public void closeFile() {
         // if stream is not null, close it
+        if(inputStream != null) inputStream.close();
     }
 }

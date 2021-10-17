@@ -7,8 +7,10 @@ class InputManager {
 
 ' Constructor initializes file and stream
 +InputManager(String path)
++InputManager()
 -File createInputFile(String path)
--Scanner createInputStream()
++void setInputStream()
++void setInputStreamToSystemIn()
 +File getInputFile()
 +Scanner getInputStream()
 +void closeFile()

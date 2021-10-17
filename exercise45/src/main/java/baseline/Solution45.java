@@ -32,6 +32,14 @@ public class Solution45 {
         // get next line from input stream
         // String replace "utilize" with "use"
         // Write line to file
-        while(input.hasNextLine()) output.writeToFileAndReplace(input.getNextLine(),"utilize","use");
+        while(input.hasNextLine()) {
+            //System.out.println("Test");
+            output.writeToFileAndReplace(input.getNextLine(),"utilize","use");
+        }
+
+        // Close file streams
+        input.closeFile();
+        in.closeFile();
+        output.closeFile();
     }
 }
